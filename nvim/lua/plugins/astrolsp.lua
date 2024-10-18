@@ -101,6 +101,36 @@ return {
             return client.supports_method "textDocument/semanticTokens/full" and vim.lsp.semantic_tokens ~= nil
           end,
         },
+        gr = {
+          "<cmd>Lspsaga rename<cr>",
+          desc = "Lspsaga renaming",
+        },
+        gx = {
+          "<cmd>Lspsaga code_action<cr>",
+          desc = "Lspsaga code actions",
+        },
+        K = {
+          "<cmd>Lspsaga hover_doc<cr>",
+          desc = "Lspsaga documentation",
+        },
+        go = {
+          "<cmd>Lspsaga show_line_diagnostics<cr>",
+          desc = "Lspsaga show line diagnostic",
+        },
+        gj = {
+          "<cmd>Lspsaga diagnostic_jump_next<cr>",
+          desc = "Lspsaga go to next diagnostic",
+        },
+        gk = {
+          "<cmd>Lspsaga diagnostic_jump_prev<cr>",
+          desc = "Lspsaga go to previous diagnostic",
+        },
+        ["<C-u>"] = {
+          "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1, '<c-u>')<cr>",
+        },
+        ["<C-d>"] = {
+          "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1, '<c-d>')<cr>",
+        },
       },
     },
     -- A custom `on_attach` function to be run after the default `on_attach` function

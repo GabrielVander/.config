@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
@@ -66,6 +66,34 @@ return {
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
+        ["<Leader>te"] = { desc = "Neotest" },
+        ["<Leader>ter"] = { function() require("neotest").run.run() end, desc = "Run the nearest test" },
+        ["<Leader>tec"] = {
+          function() require("neotest").run.run(vim.fn.expand "%") end,
+          desc = "Run the current file",
+        },
+        ["<Leader>ted"] = {
+          function() require("neotest").run.run { strategy = "dap" } end,
+          desc = "Debug the nearest test",
+        },
+        ["<Leader>tes"] = { function() require("neotest").run.stop() end, desc = "Stop the nearest test" },
+        ["<Leader>tea"] = { function() require("neotest").run.attach() end, desc = "Attach to the nearest test" },
+        ["<Leader>tew"] = {
+          function() require("neotest").watch.watch() end,
+          desc = "Watches files related to tests for changes and re-runs tests",
+        },
+        ["<Leader>teo"] = {
+          function() require("neotest").output.open { enter = true } end,
+          desc = "Displays output of tests",
+        },
+        ["<Leader>tep"] = {
+          function() require("neotest").output_panel.toggle() end,
+          desc = "Records all output of tests over time in a single window ",
+        },
+        ["<Leader>tem"] = {
+          function() require("neotest").summary.toggle() end,
+          desc = "Displays test suite structure from project root",
+        },
       },
     },
   },
