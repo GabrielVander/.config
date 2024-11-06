@@ -1,3 +1,5 @@
+if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+
 -- AstroLSP allows you to customize the features in AstroNvim's LSP configuration engine
 -- Configuration documentation can be found with `:h astrolsp`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
@@ -43,16 +45,6 @@ return {
     ---@diagnostic disable: missing-fields
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
-      rust_analyzer = {
-        settings = {
-          ["rust-analyzer"] = {
-            cargo = {
-              extraEnv = { CARGO_PROFILE_RUST_ANALYZER_INHERITS = "dev" },
-              extraArgs = { "--profile", "rust-analyzer" },
-            },
-          },
-        },
-      },
     },
     -- customize how language servers are attached
     handlers = {
@@ -100,36 +92,6 @@ return {
           cond = function(client)
             return client.supports_method "textDocument/semanticTokens/full" and vim.lsp.semantic_tokens ~= nil
           end,
-        },
-        gr = {
-          "<cmd>Lspsaga rename<cr>",
-          desc = "Lspsaga renaming",
-        },
-        gx = {
-          "<cmd>Lspsaga code_action<cr>",
-          desc = "Lspsaga code actions",
-        },
-        K = {
-          "<cmd>Lspsaga hover_doc<cr>",
-          desc = "Lspsaga documentation",
-        },
-        go = {
-          "<cmd>Lspsaga show_line_diagnostics<cr>",
-          desc = "Lspsaga show line diagnostic",
-        },
-        gj = {
-          "<cmd>Lspsaga diagnostic_jump_next<cr>",
-          desc = "Lspsaga go to next diagnostic",
-        },
-        gk = {
-          "<cmd>Lspsaga diagnostic_jump_prev<cr>",
-          desc = "Lspsaga go to previous diagnostic",
-        },
-        ["<C-u>"] = {
-          "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1, '<c-u>')<cr>",
-        },
-        ["<C-d>"] = {
-          "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1, '<c-d>')<cr>",
         },
       },
     },
